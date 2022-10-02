@@ -1,4 +1,5 @@
 import 'package:casset_player/models/song_model.dart';
+import 'package:casset_player/widgets/SectionHeader.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,36 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
               const DiscoverMusic(),
               Column(
                 children: const <Widget>[
-                  SectionHeader()
+                  SectionHeader(
+                    title: "Trending Music",
+                  )
                 ],
               )
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class SectionHeader extends StatelessWidget {
-  const SectionHeader({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          "Trending music",
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
-        const Text("View more")
-      ],
     );
   }
 }
