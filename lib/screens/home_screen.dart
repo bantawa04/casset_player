@@ -34,16 +34,37 @@ class _HomeScreenState extends State<HomeScreen> {
               const DiscoverMusic(),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: 16.0,
-                  top: 16.0,
-                  bottom: 16.0,
+                  left: 20.0,
+                  top: 20.0,
+                  bottom: 20.0,
                 ),
                 child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(right: 16.0),
+                  children: <Widget>[
+                    const Padding(
+                      padding: EdgeInsets.only(right: 20.0),
                       child: SectionHeader(
                         title: "Trending Music",
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.27,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (ctx, index) {
+                          // print(songs[index].coverUrl);
+                          return Container(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    songs[index].coverUrl,
+                                  ),
+                                  fit: BoxFit.cover),
+                            ),
+                          );
+                        },
+                        itemCount: songs.length,
                       ),
                     )
                   ],

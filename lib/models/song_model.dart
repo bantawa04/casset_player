@@ -16,19 +16,19 @@ class Song {
       title: "Song1",
       description: "Song 1 description",
       url: "assets/music/song1.mp3",
-      coverUrl: "asets/images/cover1.jpg",
+      coverUrl: "assets/images/cover1.jpeg",
     ),
     Song(
       title: "Song2",
       description: "Song 2 description",
       url: "assets/music/song2mp3",
-      coverUrl: "asets/images/cover2.jpg",
+      coverUrl: "assets/images/cover2.jpeg",
     ),
     Song(
       title: "Song3",
       description: "Song 3 description",
       url: "assets/music/song3.mp3",
-      coverUrl: "asets/images/cover3.jpg",
+      coverUrl: "assets/images/cover3.jpeg",
     )
   ];
 }

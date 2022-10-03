@@ -27,7 +27,7 @@ class DiscoverMusic extends StatelessWidget {
                 .copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
-            height: 16,
+            height: 20,
           ),
           TextFormField(
             decoration: InputDecoration(
@@ -41,7 +41,7 @@ class DiscoverMusic extends StatelessWidget {
                   .copyWith(color: Colors.grey.shade400),
               prefixIcon: const Icon(Icons.search_outlined),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.circular(15.0),
                 borderSide: BorderSide.none,
               ),
             ),
