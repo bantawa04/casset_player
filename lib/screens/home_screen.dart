@@ -1,5 +1,5 @@
 import 'package:casset_player/models/song_model.dart';
-import 'package:casset_player/widgets/SectionHeader.dart';
+import 'package:casset_player/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,18 +26,28 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: const _CustomAppBar(),
-        bottomNavigationBar: const _CustomNavBar(),
+        appBar: const CustomAppBar(),
+        bottomNavigationBar: const CustomNavBar(),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               const DiscoverMusic(),
-              Column(
-                children: const <Widget>[
-                  SectionHeader(
-                    title: "Trending Music",
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  top: 16.0,
+                  bottom: 16.0,
+                ),
+                child: Column(
+                  children: const <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: SectionHeader(
+                        title: "Trending Music",
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           ),
@@ -45,111 +55,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
-
-class DiscoverMusic extends StatelessWidget {
-  const DiscoverMusic({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            "Welcome",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Text(
-            "Enjoy your favourite music",
-            style: Theme.of(context)
-                .textTheme
-                .headline6!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              isDense: true,
-              filled: true,
-              fillColor: Colors.white,
-              hintText: "Search",
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(color: Colors.grey.shade400),
-              prefixIcon: const Icon(Icons.search_outlined),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.0),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class _CustomNavBar extends StatelessWidget {
-  const _CustomNavBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.deepPurple.shade800,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.white,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.play_circle_fill_outlined),
-              label: "Now Playing"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border_outlined), label: "Favourites"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.people_outline), label: "Profile"),
-        ]);
-  }
-}
-
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const _CustomAppBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      leading: const Icon(Icons.grid_view_rounded),
-      actions: [
-        Container(
-          margin: const EdgeInsets.only(right: 20),
-          child: const CircleAvatar(
-            backgroundImage:
-                NetworkImage("https://randomuser.me/api/portraits/men/1.jpg"),
-          ),
-        )
-      ],
-    );
-  }
-
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(56.0);
 }
