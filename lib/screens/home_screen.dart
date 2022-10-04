@@ -52,17 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (ctx, index) {
-                          // print(songs[index].coverUrl);
-                          return Container(
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                    songs[index].coverUrl,
-                                  ),
-                                  fit: BoxFit.cover),
-                            ),
-                          );
+                          return SongCard(song: songs[index]);
                         },
                         itemCount: songs.length,
                       ),
@@ -77,3 +67,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
