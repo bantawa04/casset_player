@@ -1,3 +1,4 @@
+import 'package:casset_player/models/playlist_model.dart';
 import 'package:casset_player/models/song_model.dart';
 import 'package:casset_player/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Song> songs = Song.songs;
+  List<Playlist> playlists = Playlist.playlist;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,34 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: <Widget>[
               const DiscoverMusic(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  top: 20.0,
-                  bottom: 20.0,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20.0),
-                      child: SectionHeader(
-                        title: "Trending Music",
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.27,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (ctx, index) {
-                          return SongCard(song: songs[index]);
-                        },
-                        itemCount: songs.length,
-                      ),
-                    )
-                  ],
-                ),
-              )
+              TrendingMusic(songs: songs),
+              PlaylistCard(playlists: playlists)
             ],
           ),
         ),
@@ -67,4 +43,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
