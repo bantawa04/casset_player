@@ -21,6 +21,7 @@ class PlaylistCard extends StatelessWidget {
           const SectionHeader(title: "Playlists"),
           ListView.builder(
             shrinkWrap: true,
+            padding: const EdgeInsets.only(top: 20),
             itemBuilder: (ctx, index) {
               return PlaylistItem(playlist: playlists[index]);
             },
