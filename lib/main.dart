@@ -1,3 +1,4 @@
+import 'package:casset_player/screens/song_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './screens/home_screen.dart';
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
               displayColor: Colors.white,
             ),
       ),
-      home: const HomeScreen(),
+      home: const SongScreen(),
       getPages: [
-        GetPage(name: '/', page: () => const HomeScreen()),
+        GetPage(name: '/', page: () => const SongScreen()),
         // GetPage(name: '/song', page: () => const SongScreen())
         // GetPage(name: '/playlist', page: () => const PlaylistScreen())
       ],
