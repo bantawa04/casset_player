@@ -1,12 +1,43 @@
 import 'package:casset_player/models/song_model.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
-class SongScreen extends StatelessWidget {
+class SongScreen extends StatefulWidget {
   const SongScreen({super.key});
 
   @override
+  State<SongScreen> createState() => _SongScreenState();
+}
+
+class _SongScreenState extends State<SongScreen> {
+  @override
   Widget build(BuildContext context) {
+    AudioPlayer audioPlayer = AudioPlayer();
     Song song = Song.songs[0];
+
+    @override
+    void initState() {
+      super.initState();
+
+      audioPlayer.setAudioSource(
+        // AudioSource.uri(Uri.parse("asset://$song/.url")), //play single song
+        ConcatenatingAudioSource(
+          children: [
+            AudioSource.uri(
+              Uri.parse('asset:///${song.url}'),
+            )
+          ],
+        ),
+      );
+    }
+
+    @override
+    void dispose(){
+      audioPlayer.dispose();
+      super.dispose();
+    }
+
+    // Stream<SeekBarData> get _seekBarDataStream =>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
